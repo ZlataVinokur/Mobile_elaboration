@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         checkBox.setChecked(isChecked);
 
         if (isChecked) {
-            textViewStudent.setText("Это не я");
+            textViewStudent.setText("Это сделал не я");
         } else {
             textViewStudent.setText("Мой номер по списку № 5");
         }
