@@ -1,100 +1,77 @@
-Отчет по практической работе №1
+Отчет по практической работе №2
 ----
-В прцессе выполнения данной работы был создан проект Lesson1, в котором были созданы 3 модуля: Layouttype, controllesson1, buttonclicker. Был добавлен эмулятор для отображения работы.
-![image](https://github.com/user-attachments/assets/75dde863-739f-4bee-ba1c-b2ac6382a08f)
+В прцессе выполнения данной работы был создан проект Lesson2, в котором были изучены инструменты отладки, жизненный цикл activity, процесс создания и вызова activity и диалоговые окна.
 
-Модуль layouttype
+Жизненный цикл activity
 --
-В модуле layouttype было создано несколько файлов "Layout resource file", в каждом из которых были реализованы различные виды макетов для построения интерфейса, в том числе LinearLayout, TableLayout, ConstraintLayout. В каждом из макетов были добавлены и настроены необходимые элементы интерфейса.
+Был создан модуль ActivityLifecycle и добавлено поле для текстового ввода, также были переопределены основные методы жизненного цикла. При помощи класса Log для каждого метода жизненного цикла выводится сообщение с именем данного метода.
 
-**Макет с LinearLayout:**
-![image](https://github.com/user-attachments/assets/ffcc4b95-1360-4296-b3b5-e11e3c70cfd7)
+**Приложение**
 
-**Макет с TableLayout:**
-![image](https://github.com/user-attachments/assets/50185fcc-5c2a-4183-8863-07eb5dd81895)
+![image](https://github.com/user-attachments/assets/1d142b2c-c1c5-4726-91fe-46f3ae7be37d)
 
-**Макет с ConstraintLayout:**
-![image](https://github.com/user-attachments/assets/f5529846-0393-427e-8a72-caf6c1043249)
+**Окно «logcat» до и после ввода текста и повторного открытия приложения:**
+![image](https://github.com/user-attachments/assets/7af7ba54-6f7d-485a-89c7-a64e696c658e)
+![image](https://github.com/user-attachments/assets/7c4b7def-bae1-4ebd-ac5e-a66eb83150b6)
 
-Модуль controllesson1
+Вопросы:
+1. Будет ли вызван метод «onCreate» после нажатия на кнопку «Home» и возврата в приложение?
+   Нет, метод onCreate не будет вызван. onCreate вызывается только при первом запуске активности, возвращение в приложение после нажатия на кнопку "Home" происходит путем возобновления активности.
+2. Изменится ли значение поля «EditText» после нажатия на кнопку «Home» и возврата в приложение?
+   Нет, так как после выхода в «Home» вызывается метод onPause() и значение поля сохраняется.
+3. Изменится ли значение поля «EditText» после нажатия на кнопку «Back» и возврата в приложение?
+   Значение EditText будет сохранено и восстановится при возврате, так как был создан метод onSaveInstanceState(), реализующий сохранение состояния.
+
+Процесс создания и вызова activity
 --
-В модуле control_lesson1 был создан и настроен собственный макет с использованием следующих элементов: textView, button, imageButton, checkBox и imageview. Размещение элементов в интерфейсе было настроено с помощью разных layout элементов.
+Был создан модуль «MultiActivity» и добавлены поле для текстового ввода и кнопка, реализован обработчик события нажатия на кнопку. Далее была создана «Secondctivity» с текстовым полем. Далее была реализована логика получения во второй активности текста из первой активности.
 
-**Итоговый макет:**
-![image](https://github.com/user-attachments/assets/072e2655-1906-4865-b9c3-f52b43451f1f)
+**Приложение с введенным текстом:**
+![image](https://github.com/user-attachments/assets/5dda06d8-c781-4728-a747-34c34226e97c)
 
-Был создан файл activity_second.xml, содержащий текстовое поле editText и 6 кнопок. Далее был добавлен файл activity_second.xml (land) для изменения ориентации экрана устройства.
+**Вторая активность с полученными данными:**
+![image](https://github.com/user-attachments/assets/2ff98b67-6267-40c7-a6b0-43516e76af5d)
 
-**Макеты с activity_second.xml:**
-![image](https://github.com/user-attachments/assets/b0b598ba-a821-4ecb-9fb6-ea57b52e1f5f)
-![image](https://github.com/user-attachments/assets/324e148c-5599-4754-85e1-6a4be36d02cf)
+**Окно «logcat»:**
+![image](https://github.com/user-attachments/assets/566203e5-f87d-4931-99d5-79f9523e0fc8)
+![image](https://github.com/user-attachments/assets/68fc1b08-e384-4641-bed2-c88b7471bac1)
 
-Модуль buttonclicker
+Также был создан модуль «IntentFilter» и добавлены кнопки для просмотра веб-страницы и передачи ФИО студента в
+другое приложение, и настроена логика их работы.
+
+**Приложение:**
+![image](https://github.com/user-attachments/assets/9fd50e2b-1d01-48df-8e36-7250d012f2fc)
+
+**Просмотр веб-страницы:**
+![image](https://github.com/user-attachments/assets/f0eedd03-16fb-4f42-b525-809bb895096b)
+
+**Передача ФИО студента:**
+![image](https://github.com/user-attachments/assets/fa14ff93-fafb-4a27-9af8-97b90dbfa51a)
+
+Диалоговые окна
 --
-В модуле buttonclicker в файле activity_main.xml был создан макет с использованием текстового поля, двух кнопок и чекбокса. Настройка и изменение свойств элементов были реализованы при помощи кода в MainActivity, листинг представлен ниже. 
+Был создан новый модуль «ToastApp», добавлены поле ввода и кнопка. Далее был реализован подсчёт символов в поле ввода и вывод результата.
 
-Листинг MainActivity:
-```
-package ru.mirea.vinokurovazo.buttonclicker;
+**Приложение с подсчётом символов:**
+![image](https://github.com/user-attachments/assets/5d6de57d-65d8-4ac5-9680-adb474da5752)
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+Далее был добавлен новый модуль «NotificationApp», в котором было реализовано получение уведомления по клику.
+**Получение уведомления:**
+![image](https://github.com/user-attachments/assets/f5aa7cbd-7344-4b16-b2fc-a07dc86941e1)
 
-public class MainActivity extends AppCompatActivity {
-    private TextView textViewStudent;
-    private Button btnWhoAmI;
-    private Button btnItIsNotMe;
-    private CheckBox checkBox;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        textViewStudent = findViewById(R.id.textViewStudent);
-        btnWhoAmI = findViewById(R.id.btnWhoAmI);
-        checkBox = findViewById(R.id.checkBox);
+Для работы с диалоговыми окнами был создан новый модуль Dialog. Были сконструированы диалоговые окна для добавленных java классов: AlertDialogFragment, MyTimeDialogFragment, MyDateDialogFragment, MyProgressDialogFragment. 
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tvOut), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+**Приложение:**
+![image](https://github.com/user-attachments/assets/dd30c84d-30c7-45c0-9726-174d281f461b)
 
-        View.OnClickListener oclBtnWhoAmI = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textViewStudent.setText("Мой номер по списку № 5");
-            }
-        };
-        btnWhoAmI.setOnClickListener(oclBtnWhoAmI);
-    }
+**Диалоговое окно:**
+![image](https://github.com/user-attachments/assets/a932a20b-6be4-4532-b6c7-2cb71170718a)
 
-    public void onMyButtonClick(View view) {
-        boolean isChecked = !checkBox.isChecked();
-        checkBox.setChecked(isChecked);
+**Выбор даты:**
+![image](https://github.com/user-attachments/assets/ef685f34-e8b7-458b-b581-d2fad8749709)
 
-        if (isChecked) {
-            textViewStudent.setText("Это сделал не я");
-        } else {
-            textViewStudent.setText("Мой номер по списку № 5");
-        }
-    }
-}
-```
+**Выбор времени:**
+![image](https://github.com/user-attachments/assets/8a26bc49-d889-4e13-97fc-cdb72fe6354a)
 
-**Результат:**
-![image](https://github.com/user-attachments/assets/1a60cc1d-8645-4e25-aea3-a19f9cb71186)
-![image](https://github.com/user-attachments/assets/1c50375a-ba5a-489a-874a-e832daeb58e4)
-![image](https://github.com/user-attachments/assets/9233a357-4548-4398-ab07-2c41d44d0d12)
-
-Вывод
----
-В рамках выполнения данного практического задания было проведено ознакомление с программным обеспечением, предназначенным для разработки мобильных приложений под операционную систему Android. Изучены принципы создания новых проектов, а также модулей внутри этих проектов. В ходе работы были разработаны тестовые проекты, в которых применялись и настраивались разнообразные макеты и элементы пользовательского интерфейса. Исследованы методы смены ориентации экрана, реализовано программное управление состоянием элементов и изучены два различных подхода к созданию обработчиков событий для кнопок.
+**Прогресс:**
+![image](https://github.com/user-attachments/assets/0bc9dc3e-eede-4e1c-a6f3-b9c0cb3dca74)
