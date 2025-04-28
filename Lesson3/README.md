@@ -1,77 +1,74 @@
-Отчет по практической работе №2
+Отчет по практической работе №3
 ----
-В прцессе выполнения данной работы был создан проект Lesson2, в котором были изучены инструменты отладки, жизненный цикл activity, процесс создания и вызова activity и диалоговые окна.
+В ходе практической работы были изучены передача, обмен и получение данных с помощью Intent, также рассмотрен жизненный цикл компонента фрагмент совместно с Activity в различных приложениях.
 
-Жизненный цикл activity
+Задание №1
 --
-Был создан модуль ActivityLifecycle и добавлено поле для текстового ввода, также были переопределены основные методы жизненного цикла. При помощи класса Log для каждого метода жизненного цикла выводится сообщение с именем данного метода.
+Для задания был создан модуль «IntentApp» и добавлено две активности для получения системного времени и передачи данных из первой активности, и получения этих данных во второй активности.
 
 **Приложение**
 
-![image](https://github.com/user-attachments/assets/1d142b2c-c1c5-4726-91fe-46f3ae7be37d)
+![image](https://github.com/user-attachments/assets/96eccb50-4a16-4161-a0f5-155c7a66adb9)
 
-**Окно «logcat» до и после ввода текста и повторного открытия приложения:**
-![image](https://github.com/user-attachments/assets/7af7ba54-6f7d-485a-89c7-a64e696c658e)
-![image](https://github.com/user-attachments/assets/7c4b7def-bae1-4ebd-ac5e-a66eb83150b6)
+**Данные во второй активности:**
+![image](https://github.com/user-attachments/assets/e15be803-c680-460a-b558-43a430f45306)
 
-Вопросы:
-1. Будет ли вызван метод «onCreate» после нажатия на кнопку «Home» и возврата в приложение?
-   Нет, метод onCreate не будет вызван. onCreate вызывается только при первом запуске активности, возвращение в приложение после нажатия на кнопку "Home" происходит путем возобновления активности.
-2. Изменится ли значение поля «EditText» после нажатия на кнопку «Home» и возврата в приложение?
-   Нет, так как после выхода в «Home» вызывается метод onPause() и значение поля сохраняется.
-3. Изменится ли значение поля «EditText» после нажатия на кнопку «Back» и возврата в приложение?
-   Значение EditText будет сохранено и восстановится при возврате, так как был создан метод onSaveInstanceState(), реализующий сохранение состояния.
-
-Процесс создания и вызова activity
+Задание №2
 --
-Был создан модуль «MultiActivity» и добавлены поле для текстового ввода и кнопка, реализован обработчик события нажатия на кнопку. Далее была создана «Secondctivity» с текстовым полем. Далее была реализована логика получения во второй активности текста из первой активности.
-
-**Приложение с введенным текстом:**
-![image](https://github.com/user-attachments/assets/5dda06d8-c781-4728-a747-34c34226e97c)
-
-**Вторая активность с полученными данными:**
-![image](https://github.com/user-attachments/assets/2ff98b67-6267-40c7-a6b0-43516e76af5d)
-
-**Окно «logcat»:**
-![image](https://github.com/user-attachments/assets/566203e5-f87d-4931-99d5-79f9523e0fc8)
-![image](https://github.com/user-attachments/assets/68fc1b08-e384-4641-bed2-c88b7471bac1)
-
-Также был создан модуль «IntentFilter» и добавлены кнопки для просмотра веб-страницы и передачи ФИО студента в
-другое приложение, и настроена логика их работы.
+Был создан модуль «Sharer» и прописана логика передачи данных при помощи ACTION_SEND.
 
 **Приложение:**
-![image](https://github.com/user-attachments/assets/9fd50e2b-1d01-48df-8e36-7250d012f2fc)
+![image](https://github.com/user-attachments/assets/2a56531e-410d-44df-8e25-ba86ed791c16)
 
-**Просмотр веб-страницы:**
-![image](https://github.com/user-attachments/assets/f0eedd03-16fb-4f42-b525-809bb895096b)
-
-**Передача ФИО студента:**
-![image](https://github.com/user-attachments/assets/fa14ff93-fafb-4a27-9af8-97b90dbfa51a)
-
-Диалоговые окна
+Задание №3
 --
-Был создан новый модуль «ToastApp», добавлены поле ввода и кнопка. Далее был реализован подсчёт символов в поле ввода и вывод результата.
-
-**Приложение с подсчётом символов:**
-![image](https://github.com/user-attachments/assets/5d6de57d-65d8-4ac5-9680-adb474da5752)
-
-Далее был добавлен новый модуль «NotificationApp», в котором было реализовано получение уведомления по клику.
-**Получение уведомления:**
-![image](https://github.com/user-attachments/assets/f5aa7cbd-7344-4b16-b2fc-a07dc86941e1)
-
-Для работы с диалоговыми окнами был создан новый модуль Dialog. Были сконструированы диалоговые окна для добавленных java классов: AlertDialogFragment, MyTimeDialogFragment, MyDateDialogFragment, MyProgressDialogFragment. 
+Был создан новый модуль «FavoriteBook». В нём созданы две активности, реализована логика получения данных из первой активности и отправки введённых данных из второй активности назад.
 
 **Приложение:**
-![image](https://github.com/user-attachments/assets/dd30c84d-30c7-45c0-9726-174d281f461b)
+![image](https://github.com/user-attachments/assets/a07f0366-9708-4789-ab77-a19928e9e8f6)
 
-**Диалоговое окно:**
-![image](https://github.com/user-attachments/assets/a932a20b-6be4-4532-b6c7-2cb71170718a)
+**Данные во второй активности:**
+![image](https://github.com/user-attachments/assets/08140dc6-5de8-42f4-ae50-80aac5373317)
 
-**Выбор даты:**
-![image](https://github.com/user-attachments/assets/ef685f34-e8b7-458b-b581-d2fad8749709)
+**Данные переданные обратно в первую активность:**
+![image](https://github.com/user-attachments/assets/f0035066-6da8-4249-ba8d-2a7aa1abe28d)
 
-**Выбор времени:**
-![image](https://github.com/user-attachments/assets/8a26bc49-d889-4e13-97fc-cdb72fe6354a)
 
-**Прогресс:**
-![image](https://github.com/user-attachments/assets/0bc9dc3e-eede-4e1c-a6f3-b9c0cb3dca74)
+Задание №4
+--
+Был создан модуль «SystemIntentsApp» и настроены кнопки с такими функциями как звонок, открытие браузера и открытие карты. 
+
+**Совершение звонка:**
+![image](https://github.com/user-attachments/assets/7d73b65a-81e1-4ee9-90b3-f0aa5dbc9320)
+
+**Открытие страницы браузера:**
+![image](https://github.com/user-attachments/assets/5333547a-7f66-4682-8224-d2f6bdd92eb5)
+
+**Открытие карты по указанным координатам:**
+![image](https://github.com/user-attachments/assets/22134afb-f691-4c7a-a203-cdf3aa27eb61)
+
+Задание №5
+--
+Также был создан новый модуль SimpleFragmentApp. Были созданы два фрагмента различных цветов и настроена логика отображения ориентации экрана с этими двумя фрагментами.
+
+**Приложение:**
+![image](https://github.com/user-attachments/assets/915bd251-267d-4e3d-b7b1-58e912c33ece)
+
+**Второй фрагмент:**
+![image](https://github.com/user-attachments/assets/53ba3214-d937-4b5d-b7f2-896b1db257d2)
+
+**Смена ориентации на горизонтальную:**
+![image](https://github.com/user-attachments/assets/74b6edb9-ca59-4fde-9f7a-4b1ad36b176c)
+
+Проект "MireaProject"
+--
+Был создан проект «MireaProject», далее добавлены два новых фрагмента снастроенными иконками и заголовками для отображения в меню. Фрагменты содержат такие элементы интерфейса как текст и изображение в первом, и ссылку на веб-браузер во втором. Также был добавлен компонент навигации и реализована логика смены контента при переходе по пунктам меню.
+
+**Приложение:**
+![image](https://github.com/user-attachments/assets/23435b3a-a4b0-4e0e-8a11-db79bf54a909)
+**Информация:**
+![image](https://github.com/user-attachments/assets/2fc0b1a9-4de3-427e-be96-8ed51802d2ee)
+**Браузер:**
+![image](https://github.com/user-attachments/assets/2e94446e-e37d-4f4a-81e5-861ae9e0df67)
+
+
