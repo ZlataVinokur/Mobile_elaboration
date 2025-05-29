@@ -47,5 +47,15 @@
             android:icon="@drawable/ic_launcher_background"
             android:title="Микрофон" />
 
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Профиль" />
+
+        <item
+            android:id="@+id/nav_files"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Файлы" />
+
     </group>
 </menu>

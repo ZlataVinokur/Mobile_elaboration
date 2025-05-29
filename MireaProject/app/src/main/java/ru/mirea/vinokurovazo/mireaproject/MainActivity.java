@@ -14,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import ru.mirea.vinokurovazo.mireaproject.R;
 import ru.mirea.vinokurovazo.mireaproject.databinding.ActivityMainBinding;
 
 import android.os.Bundle;
@@ -26,12 +27,16 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import android.widget.Toast;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import com.google.android.material.navigation.NavigationView;
 
 import ru.mirea.vinokurovazo.mireaproject.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FileDialogFragment.FileDialogListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -61,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_background_task,
                 R.id.nav_compass,
                 R.id.nav_camera,
-                R.id.nav_microphone)
+                R.id.nav_microphone,
+                R.id.nav_profile,
+                R.id.nav_files)
                 .setOpenableLayout(drawer)
                 .build();
 
@@ -79,5 +86,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onDialogSave(String filename, String content) {
+        try {
+            File file = new File(getFilesDir(), filename);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(content.getBytes());
+            fos.close();
+            Toast.makeText(this, "Файл сохранён успешно", Toast.LENGTH_SHORT).show();
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.nav_host_fragment_content_main);
+            WorkingWithFilesFragment fragment = (WorkingWithFilesFragment) navHostFragment.getChildFragmentManager()
+                    .getFragments()
+                    .get(0);
+
+            if (fragment != null) {
+                fragment.updateFileList();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Ошибка сохранения файла", Toast.LENGTH_SHORT).show();
+        }
     }
 }
