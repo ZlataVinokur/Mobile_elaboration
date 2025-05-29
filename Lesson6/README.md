@@ -55,5 +55,16 @@
 
 Задание №6
 --
+Приложение MireaProject получило два новых фрагмента. “ProfileFragment” содержит поля ввода для информации о студенте и кнопку сохранения этих данных в файл настроек. “WorkingWithFilesFragment” отображает список сохранённых файлов и имеет кнопку, открывающую диалоговое окно для создания новых файлов с названием и содержимым с последующим сохранением во внутреннее хранилище.
 
 **Приложение:**
+![image](https://github.com/user-attachments/assets/547042d8-da4f-44cb-9ed1-ae6711f27073)
+
+**Профиль:**
+![image](https://github.com/user-attachments/assets/346a07b7-0369-4b4c-9781-6daab093e08a)
+![image](https://github.com/user-attachments/assets/c7fda188-4fc4-42f1-ac45-6361c545af28)
+
+**Работа с файлами:**
+![image](https://github.com/user-attachments/assets/f5c199c7-d9ca-45c5-9eed-ac4d122fae68)
+![image](https://github.com/user-attachments/assets/48d372c0-727a-4d5f-9a73-9898808fb123)
+![image](https://github.com/user-attachments/assets/7e00f0cf-f33d-4138-a553-e545047e98a8)
