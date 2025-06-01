@@ -29,7 +29,7 @@ public class CameraFragment extends Fragment {
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == requireActivity().RESULT_OK && result.getData() != null) {
                     Bundle extras = result.getData().getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    Bitmap imageBitmap = (Bitmap) extras.get("ru/mirea/vinokurovazo/mireaproject/data");
                     imageView.setImageBitmap(imageBitmap);
                 } else {
                     Toast.makeText(requireContext(), "Не удалось сделать снимок", Toast.LENGTH_SHORT).show();
